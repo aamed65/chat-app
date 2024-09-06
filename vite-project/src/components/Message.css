@@ -1,0 +1,42 @@
+/* src/components/Message.css */
+.message {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    max-width: 70%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .message.own {
+    background-color: #d1e7dd;
+    margin-left: auto;
+    flex-direction: row-reverse; /* Flytta avsändarens bild till höger */
+  }
+  
+  .message.other {
+    background-color: #f8d7da;
+    margin-right: auto;
+    flex-direction: row; /* Bild till vänster */
+  }
+  
+  .message .avatar {
+    display: inline-block;
+    vertical-align: top;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .message .text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+  }
+  
+  .message .delete-btn {
+    cursor: pointer;
+    color: red;
+    margin-top: 5px;
+  }
+  
