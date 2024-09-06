@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 export const useAuth = () => {
-  const [token, setToken] = useState(() => localStorage.getItem('jwtToken'));
+  const [token, setToken] = useState(() => localStorage.getItem('jwtToken')); // Hämta token från localStorage
 
   useEffect(() => {
     const storedToken = localStorage.getItem('jwtToken');
