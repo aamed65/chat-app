@@ -1,4 +1,4 @@
-// src/api/csrf.js
+
 import axios from 'axios';
 
 export const fetchCsrfToken = async () => {
