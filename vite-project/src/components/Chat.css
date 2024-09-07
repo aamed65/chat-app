@@ -33,11 +33,11 @@
 }
 
 .left .message-content {
-  background-color: #55d233;
+  background-color: #d2d2d2;
 }
 
 .right .message-content {
-  background-color: #ba9d9d;
+  background-color: #8778e5;
 }
 
 .avatar {
@@ -50,4 +50,3 @@
 .error {
   color: red;
 }
-

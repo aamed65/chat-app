@@ -12,10 +12,10 @@ function App() {
     <Router>
       <div className="App">
       
-        <SideNav /> {/* Om du har en navigeringskomponent */}
+        <SideNav /> {}
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} /> {/* Lägg till denna rad */}
+          <Route path="/login" element={<Login />} /> {}
           <Route path="/chat" element={<Chat />} />
           <Route path="/Register" element={<Register />} />
         </Routes>

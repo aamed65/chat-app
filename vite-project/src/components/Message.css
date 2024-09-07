@@ -1,4 +1,4 @@
-/* src/components/Message.css */
+
 .message {
     padding: 10px;
     margin: 5px;
@@ -11,13 +11,13 @@
   .message.own {
     background-color: #d1e7dd;
     margin-left: auto;
-    flex-direction: row-reverse; /* Flytta avsändarens bild till höger */
+    flex-direction: row-reverse; 
   }
   
   .message.other {
     background-color: #f8d7da;
     margin-right: auto;
-    flex-direction: row; /* Bild till vänster */
+    flex-direction: row;
   }
   
   .message .avatar {
@@ -39,4 +39,3 @@
     color: red;
     margin-top: 5px;
   }
-  
