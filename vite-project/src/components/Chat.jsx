@@ -17,21 +17,24 @@ const Chat = () => {
       avatar: "https://i.pravatar.cc/100?img=14",
       username: "Johnny",
       conversationId: null,
-      id: 1 // Lägg till ID för att kunna radera
+      id: 1,
+      isFake: true, 
     },
     {
       text: "Hallå!! Svara då!!",
       avatar: "https://i.pravatar.cc/100?img=14",
       username: "Johnny",
       conversationId: null,
-      id: 2 // Lägg till ID för att kunna radera
+      id: 2,
+      isFake: true, 
     },
     {
       text: "Sover du eller?! 😴",
       avatar: "https://i.pravatar.cc/100?img=14",
       username: "Johnny",
       conversationId: null,
-      id: 3 // Lägg till ID för att kunna radera
+      id: 3,
+      isFake: true, 
     }
   ];
 
@@ -51,7 +54,7 @@ const Chat = () => {
   useEffect(() => {
     if (jwtToken) {
       getCsrfToken();
-      fetchMessages(); // Fetch initial messages when JWT token is available
+      fetchMessages(); 
     }
   }, [jwtToken, getCsrfToken]);
 
@@ -84,22 +87,29 @@ const Chat = () => {
       );
 
       setNewMessage('');
-      fetchMessages(); // Fetch updated messages
+      fetchMessages(); 
     } catch (error) {
       setError('Error sending message.');
       console.error('Error sending message:', error);
     }
   };
 
-  const deleteMessage = async (msgID) => {
-    const token = sessionStorage.getItem("token");
+  const deleteMessage = async (msgID, isFake) => {
+    if (isFake) {
+      
+      setMessages((prevMessages) =>
+        prevMessages.filter((msg) => msg.id !== msgID)
+      );
+      console.log("Fake message deleted:", msgID);
+      return;
+    }
 
-    if (token) {
+    if (jwtToken) {
       try {
         const response = await fetch(`https://chatify-api.up.railway.app/messages/${msgID}`, {
           method: "DELETE",
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${jwtToken}`,
           },
         });
 
@@ -128,8 +138,8 @@ const Chat = () => {
             <img src={msg.avatar} alt="avatar" className="avatar" />
             <div className="message-content">
               <p>{msg.text}</p>
-              {msg.username === 'Johnny' && (
-                <button onClick={() => deleteMessage(msg.id)}>Delete</button>
+              {msg.username !== 'Johnny' && (
+                <button onClick={() => deleteMessage(msg.id, true)}>Delete</button>
               )}
             </div>
           </div>
@@ -142,8 +152,8 @@ const Chat = () => {
             <img src={msg.avatar} alt="avatar" className="avatar" />
             <div className="message-content">
               <p>{msg.text}</p>
-              {msg.username === 'Johnny' && (
-                <button onClick={() => deleteMessage(msg.id)}>Delete</button>
+              {msg.username !== 'Johnny' && (
+                <button onClick={() => deleteMessage(msg.id, false)}>Delete</button>
               )}
             </div>
           </div>
