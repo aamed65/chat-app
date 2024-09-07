@@ -1,7 +1,7 @@
-// src/App.jsx
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/Login'; // Importera med stor bokstav
+import Login from './components/Login'; 
 import Chat from './components/Chat';
 import SideNav from './components/SideNav';
 import './App.css';
